@@ -8,454 +8,155 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800;900&display=swap" rel="stylesheet">
 <style>
-/* ===== RESET ===== */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+* {margin:0;padding:0;box-sizing:border-box;}
+html,body{width:100%;height:100%;overflow:hidden;}
+body{font-family:"Poppins",sans-serif;color:white;}
+
+.screen{
+  position:relative;
+  width:100vw;height:100vh;overflow:hidden;
+  background:linear-gradient(90deg,rgba(3,29,62,.88),rgba(5,62,105,.70),rgba(40,67,82,.52),rgba(115,92,38,.35)),url("nu-campus.png");
+  background-size:cover;background-position:center;background-repeat:no-repeat;
 }
-html,
-body {
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-}
-body {
-  font-family: "Poppins", sans-serif;
-  color: white;
+.screen::after{
+  content:"";position:absolute;inset:0;
+  background:linear-gradient(180deg,rgba(0,15,35,.08),rgba(0,20,50,.25));
+  pointer-events:none;z-index:1;
 }
 
-/* ===== MAIN SCREEN BACKGROUND ===== */
-.screen {
-  position: relative;
-  width: 100vw;
-  height: 100vh;
-  overflow: hidden;
-  background:
-    linear-gradient(
-      90deg,
-      rgba(3, 29, 62, 0.88),
-      rgba(5, 62, 105, 0.70),
-      rgba(40, 67, 82, 0.52),
-      rgba(115, 92, 38, 0.35)
-    ),
-    url("NU SYMBOLS/nu-campus.png");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
+.intro{
+  position:absolute;inset:0;z-index:100;
+  display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;
+  background:linear-gradient(rgba(2,28,60,.78),rgba(2,28,60,.78)),url("nu-campusintro.jpg");
+  background-size:cover;background-position:center;background-repeat:no-repeat;
+  transition:opacity .9s ease,visibility .9s ease;
 }
-.screen::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background:
-    linear-gradient(
-      180deg,
-      rgba(0, 15, 35, 0.08),
-      rgba(0, 20, 50, 0.25)
-    );
-  pointer-events: none;
-  z-index: 1;
+.intro.hidden{opacity:0;visibility:hidden;}
+.intro-logo{
+  width:175px;height:175px;object-fit:contain;
+  content:url("nu-logo.png");
+  filter:drop-shadow(0 5px 12px rgba(0,0,0,.55)) drop-shadow(0 0 18px rgba(255,193,7,.40));
 }
-
-/* ===== INTRO SLIDE — ✅ CORRECTED PATHS ===== */
-.intro {
-  position: absolute;
-  inset: 0;
-  z-index: 100;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  background:
-    linear-gradient(rgba(2, 28, 60, 0.78), rgba(2, 28, 60, 0.78)),
-    url("NU SYMBOLS/nu-campusintro.jpg");
-  background-size: cover;
-  background-position: center center;
-  background-repeat: no-repeat;
-  transition: opacity 0.9s ease, visibility 0.9s ease;
+.intro-school{
+  margin-top:10px;
+  font-size:clamp(42px,4.5vw,64px);font-weight:900;letter-spacing:4px;
+  text-shadow:0 4px 12px rgba(0,0,0,.55);
 }
-.intro.hidden {
-  opacity: 0;
-  visibility: hidden;
+.intro-line{
+  width:300px;height:4px;margin:20px 0;
+  background:#ffc107;border-radius:10px;
+  box-shadow:0 0 14px rgba(255,193,7,.55);
 }
-.intro-logo {
-  width: 175px;
-  height: 175px;
-  object-fit: contain;
-  content: url("NU SYMBOLS/nu-logo.png");
-  filter:
-    drop-shadow(0 5px 12px rgba(0,0,0,.55))
-    drop-shadow(0 0 18px rgba(255,193,7,.40));
-}
-.intro-school {
-  margin-top: 10px;
-  font-size: clamp(42px, 4.5vw, 64px);
-  font-weight: 900;
-  letter-spacing: 4px;
-  text-shadow: 0 4px 12px rgba(0,0,0,.55);
-}
-.intro-line {
-  width: 300px;
-  height: 4px;
-  margin: 20px 0;
-  background: #ffc107;
-  border-radius: 10px;
-  box-shadow: 0 0 14px rgba(255,193,7,.55);
-}
-.intro-name {
-  margin-top: 10px;
-  font-size: clamp(36px, 3.5vw, 52px);
-  font-weight: 900;
-  letter-spacing: 3px;
-}
-.intro-course {
-  margin-top: 8px;
-  font-size: 22px;
-  font-weight: 800;
-  color: #ffd43b;
-}
-.intro-bulldog {
-  position: absolute;
-  right: 5%;
-  bottom: 6%;
-  width: 160px;
-  height: 160px;
-  object-fit: contain;
-  content: url("NU SYMBOLS/nu-bulldog.png");
-  filter:
-    drop-shadow(0 5px 12px rgba(0,0,0,.55))
-    drop-shadow(0 0 18px rgba(255,193,7,.40));
+.intro-name{margin-top:10px;font-size:clamp(36px,3.5vw,52px);font-weight:900;letter-spacing:3px;}
+.intro-course{margin-top:8px;font-size:22px;font-weight:800;color:#ffd43b;}
+.intro-bulldog{
+  position:absolute;right:5%;bottom:6%;
+  width:160px;height:160px;object-fit:contain;
+  content:url("nu-bulldog.png");
+  filter:drop-shadow(0 5px 12px rgba(0,0,0,.55)) drop-shadow(0 0 18px rgba(255,193,7,.40));
 }
 
-/* ===== MAIN PRESENTATION ===== */
-.presentation {
-  position: absolute;
-  inset: 0;
-  z-index: 20;
-  display: flex;
-  flex-direction: column;
-  opacity: 0;
-  transition: opacity 0.9s ease;
-  padding: 40px clamp(25px, 5vw, 80px) 20px;
+.presentation{
+  position:absolute;inset:0;z-index:20;
+  display:flex;flex-direction:column;opacity:0;
+  transition:opacity .9s ease;
+  padding:40px clamp(25px,5vw,80px) 20px;
 }
-.presentation.show {
-  opacity: 1;
-}
+.presentation.show{opacity:1;}
 
-.top-header {
-  position: relative;
-  flex: 0 0 auto;
-  height: 160px;
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  margin-bottom: 15px;
+.top-header{
+  position:relative;flex:0 0 auto;height:160px;
+  display:flex;justify-content:center;align-items:flex-start;margin-bottom:15px;
 }
-.logo {
-  position: absolute;
-  left: 5px;
-  top: 0;
-  width: 145px;
-  height: 145px;
-  object-fit: contain;
-  content: url("NU SYMBOLS/nu-logo.png");
-  filter:
-    drop-shadow(0 4px 10px rgba(0,0,0,.55))
-    drop-shadow(0 0 12px rgba(255,193,7,.35));
+.logo{
+  position:absolute;left:5px;top:0;
+  width:145px;height:145px;object-fit:contain;
+  content:url("nu-logo.png");
+  filter:drop-shadow(0 4px 10px rgba(0,0,0,.55)) drop-shadow(0 0 12px rgba(255,193,7,.35));
 }
-.bulldog {
-  position: absolute;
-  right: 5px;
-  top: 0;
-  width: 145px;
-  height: 145px;
-  object-fit: contain;
-  content: url("NU SYMBOLS/nu-bulldog.png");
-  filter:
-    drop-shadow(0 4px 10px rgba(0,0,0,.55))
-    drop-shadow(0 0 12px rgba(255,193,7,.35));
+.bulldog{
+  position:absolute;right:5px;top:0;
+  width:145px;height:145px;object-fit:contain;
+  content:url("nu-bulldog.png");
+  filter:drop-shadow(0 4px 10px rgba(0,0,0,.55)) drop-shadow(0 0 12px rgba(255,193,7,.35));
 }
-.title-area {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  gap: 6px;
-}
-.school-title {
-  font-size: clamp(32px, 3.2vw, 46px);
-  line-height: 1.2;
-  font-weight: 900;
-  letter-spacing: 3px;
-  text-shadow: 0 3px 10px rgba(0,0,0,.65);
-}
-.greeting {
-  color: #ffd43b;
-  font-size: clamp(20px, 2vw, 30px);
-  font-weight: 900;
-  white-space: nowrap;
-  text-shadow: 0 3px 8px rgba(0,0,0,.6);
-}
-.timeline {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: 8px;
-}
-.timeline-item {
-  position: relative;
-  padding: 0 20px;
-  font-size: 17px;
-  font-weight: 900;
-  letter-spacing: 1px;
-  color: rgba(255,255,255,.92);
-  white-space: nowrap;
-}
-.timeline-item:not(:last-child)::after {
-  content: "|";
-  position: absolute;
-  right: -2px;
-  color: #ffc107;
-}
-.timeline-item.active {
-  color: #ffd43b;
-  text-shadow: 0 0 9px rgba(255,193,7,.55);
-}
+.title-area{display:flex;flex-direction:column;align-items:center;text-align:center;gap:6px;}
+.school-title{font-size:clamp(32px,3.2vw,46px);line-height:1.2;font-weight:900;letter-spacing:3px;text-shadow:0 3px 10px rgba(0,0,0,.65);}
+.greeting{color:#ffd43b;font-size:clamp(20px,2vw,30px);font-weight:900;white-space:nowrap;text-shadow:0 3px 8px rgba(0,0,0,.6);}
+.timeline{display:flex;justify-content:center;align-items:center;margin-top:8px;}
+.timeline-item{position:relative;padding:0 20px;font-size:17px;font-weight:900;letter-spacing:1px;color:rgba(255,255,255,.92);white-space:nowrap;}
+.timeline-item:not(:last-child)::after{content:"|";position:absolute;right:-2px;color:#ffc107;}
+.timeline-item.active{color:#ffd43b;text-shadow:0 0 9px rgba(255,193,7,.55);}
 
-.main-content {
-  flex: 1;
-  min-height: 0;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
-  gap: 18px;
-  padding-top: 8px;
-}
+.main-content{flex:1;min-height:0;display:flex;flex-direction:column;justify-content:flex-start;align-items:center;gap:18px;padding-top:8px;}
+.video-row{width:100%;display:grid;grid-template-columns:1fr 1fr;gap:24px;flex:0 0 auto;}
+.video-card{position:relative;height:clamp(320px,42vh,420px);overflow:hidden;border:3px solid #ffc107;border-radius:14px;background:linear-gradient(135deg,rgba(2,35,70,.95),rgba(2,69,105,.89));box-shadow:0 8px 22px rgba(0,0,0,.40);}
+.video-card::before{content:"";position:absolute;left:0;right:0;top:0;height:5px;background:#ffc107;}
+.video-label{position:absolute;top:14px;left:16px;padding:8px 18px;border-radius:6px;background:#ffc107;color:#062d59;font-size:17px;font-weight:900;letter-spacing:.6px;z-index:5;}
+.placeholder{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;}
+.play{width:72px;height:72px;display:flex;align-items:center;justify-content:center;border:3px solid #ffc107;border-radius:50%;color:#ffc107;font-size:28px;}
+.placeholder-title{margin-top:14px;font-size:clamp(30px,3vw,40px);font-weight:900;letter-spacing:1px;}
+.placeholder-sub{margin-top:8px;font-size:clamp(18px,1.8vw,24px);font-weight:700;color:#ffd43b;}
 
-.video-row {
-  width: 100%;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 24px;
-  flex: 0 0 auto;
-}
-.video-card {
-  position: relative;
-  height: clamp(320px, 42vh, 420px);
-  overflow: hidden;
-  border: 3px solid #ffc107;
-  border-radius: 14px;
-  background: linear-gradient(135deg, rgba(2, 35, 70, .95), rgba(2, 69, 105, .89));
-  box-shadow: 0 8px 22px rgba(0,0,0,.40);
-}
-.video-card::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 0;
-  height: 5px;
-  background: #ffc107;
-}
-.video-label {
-  position: absolute;
-  top: 14px;
-  left: 16px;
-  padding: 8px 18px;
-  border-radius: 6px;
-  background: #ffc107;
-  color: #062d59;
-  font-size: 17px;
-  font-weight: 900;
-  letter-spacing: .6px;
-  z-index: 5;
-}
-.placeholder {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-}
-.play {
-  width: 72px;
-  height: 72px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border: 3px solid #ffc107;
-  border-radius: 50%;
-  color: #ffc107;
-  font-size: 28px;
-}
-.placeholder-title {
-  margin-top: 14px;
-  font-size: clamp(30px, 3vw, 40px);
-  font-weight: 900;
-  letter-spacing: 1px;
-}
-.placeholder-sub {
-  margin-top: 8px;
-  font-size: clamp(18px, 1.8vw, 24px);
-  font-weight: 700;
-  color: #ffd43b;
-}
+.identity-row{width:100%;display:grid;grid-template-columns:1fr 1fr;gap:24px;flex:0 0 auto;}
+.identity{text-align:center;}
+.identity-name{font-size:clamp(28px,2.5vw,38px);font-weight:900;line-height:1.2;letter-spacing:2px;text-shadow:0 3px 8px rgba(0,0,0,.65);}
+.identity-course{margin-top:5px;color:#ffd43b;font-size:clamp(16px,1.5vw,21px);font-weight:900;}
 
-.identity-row {
-  width: 100%;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 24px;
-  flex: 0 0 auto;
-}
-.identity {
-  text-align: center;
-}
-.identity-name {
-  font-size: clamp(28px, 2.5vw, 38px);
-  font-weight: 900;
-  line-height: 1.2;
-  letter-spacing: 2px;
-  text-shadow: 0 3px 8px rgba(0,0,0,.65);
-}
-.identity-course {
-  margin-top: 5px;
-  color: #ffd43b;
-  font-size: clamp(16px, 1.5vw, 21px);
-  font-weight: 900;
-}
+.commitment-row{width:100%;display:flex;justify-content:center;align-items:center;flex-wrap:nowrap;flex:0 0 auto;}
+.pillar{padding:8px 22px;border-right:1px solid rgba(255,193,7,.60);font-size:clamp(15px,1.4vw,18px);font-weight:900;line-height:1.2;white-space:nowrap;color:white;}
+.pillar:last-child{border-right:none;}
+.pillar.active{color:#ffd43b;background:rgba(255,193,7,.13);border-radius:6px;text-shadow:0 0 8px rgba(255,193,7,.5);}
 
-.commitment-row {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: nowrap;
-  flex: 0 0 auto;
-}
-.pillar {
-  padding: 8px 22px;
-  border-right: 1px solid rgba(255,193,7,.60);
-  font-size: clamp(15px, 1.4vw, 18px);
-  font-weight: 900;
-  line-height: 1.2;
-  white-space: nowrap;
-  color: white;
-}
-.pillar:last-child {
-  border-right: none;
-}
-.pillar.active {
-  color: #ffd43b;
-  background: rgba(255,193,7,.13);
-  border-radius: 6px;
-  text-shadow: 0 0 8px rgba(255,193,7,.5);
-}
+.script-panel{position:relative;width:100%;min-height:140px;max-height:180px;flex:0 0 auto;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:18px 40px;border:3px solid #ffc107;border-radius:12px;background:linear-gradient(110deg,rgba(2,35,70,.95),rgba(2,68,103,.91));box-shadow:0 7px 20px rgba(0,0,0,.35);}
+.script-commitment-prefix{color:#ffd43b;font-size:clamp(20px,1.8vw,26px);font-weight:900;letter-spacing:1px;margin-bottom:6px;transition:opacity .25s ease;}
+.script-section{color:#ffd43b;font-size:clamp(24px,2.2vw,32px);font-weight:900;letter-spacing:1px;line-height:1.2;margin-bottom:8px;transition:opacity .25s ease;}
+.script-section:empty{display:none;}
+.script-text{max-width:1300px;color:white;font-size:clamp(16px,1.5vw,19px);font-weight:600;line-height:1.6;text-shadow:0 2px 6px rgba(0,0,0,.7);transition:opacity .25s ease;}
 
-.script-panel {
-  position: relative;
-  width: 100%;
-  min-height: 140px;
-  max-height: 180px;
-  flex: 0 0 auto;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  padding: 18px 40px;
-  border: 3px solid #ffc107;
-  border-radius: 12px;
-  background: linear-gradient(110deg, rgba(2,35,70,.95), rgba(2,68,103,.91));
-  box-shadow: 0 7px 20px rgba(0,0,0,.35);
+@media(max-height:800px){
+  .presentation{padding-top:25px;padding-bottom:12px;}
+  .top-header{height:135px;}
+  .logo,.bulldog{width:115px;height:115px;}
+  .school-title{font-size:28px;}
+  .greeting{font-size:19px;}
+  .timeline-item{font-size:15px;padding:0 16px;}
+  .main-content{gap:14px;}
+  .video-card{height:280px;}
+  .play{width:60px;height:60px;font-size:24px;}
+  .placeholder-title{font-size:26px;}
+  .placeholder-sub{font-size:16px;}
+  .identity-name{font-size:26px;}
+  .identity-course{font-size:15px;}
+  .pillar{padding:6px 16px;font-size:14px;}
+  .script-panel{min-height:120px;max-height:150px;padding:14px 25px;}
+  .script-commitment-prefix{font-size:18px;}
+  .script-section{font-size:22px;}
+  .script-text{font-size:15px;line-height:1.5;}
 }
-.script-commitment-prefix {
-  color: #ffd43b;
-  font-size: clamp(20px, 1.8vw, 26px);
-  font-weight: 900;
-  letter-spacing: 1px;
-  margin-bottom: 6px;
-  transition: opacity .25s ease;
-}
-.script-section {
-  color: #ffd43b;
-  font-size: clamp(24px, 2.2vw, 32px);
-  font-weight: 900;
-  letter-spacing: 1px;
-  line-height: 1.2;
-  margin-bottom: 8px;
-  transition: opacity .25s ease;
-}
-.script-section:empty {
-  display: none;
-}
-.script-text {
-  max-width: 1300px;
-  color: white;
-  font-size: clamp(16px, 1.5vw, 19px);
-  font-weight: 600;
-  line-height: 1.6;
-  text-shadow: 0 2px 6px rgba(0,0,0,.7);
-  transition: opacity .25s ease;
-}
-
-@media (max-height: 800px) {
-  .presentation {
-    padding-top: 25px;
-    padding-bottom: 12px;
-  }
-  .top-header { height: 135px; }
-  .logo, .bulldog { width: 115px; height: 115px; }
-  .school-title { font-size: 28px; }
-  .greeting { font-size: 19px; }
-  .timeline { margin-top: 6px; }
-  .timeline-item { font-size: 15px; padding: 0 16px; }
-  .main-content { gap: 14px; }
-  .video-row { gap: 20px; }
-  .video-card { height: 280px; }
-  .play { width: 60px; height: 60px; font-size: 24px; }
-  .placeholder-title { font-size: 26px; }
-  .placeholder-sub { font-size: 16px; }
-  .identity-name { font-size: 26px; }
-  .identity-course { font-size: 15px; }
-  .pillar { padding: 6px 16px; font-size: 14px; }
-  .script-panel { min-height: 120px; max-height: 150px; padding: 14px 25px; }
-  .script-commitment-prefix { font-size: 18px; }
-  .script-section { font-size: 22px; }
-  .script-text { font-size: 15px; line-height: 1.5; }
-}
-
-@media (max-height: 680px) {
-  .presentation {
-    padding-top: 18px;
-  }
-  .top-header { height: 115px; }
-  .logo, .bulldog { width: 95px; height: 95px; }
-  .school-title { font-size: 24px; }
-  .greeting { font-size: 17px; }
-  .timeline-item { font-size: 13px; padding: 0 12px; }
-  .video-card { height: 240px; }
-  .play { width: 52px; height: 52px; font-size: 20px; }
-  .placeholder-title { font-size: 22px; }
-  .placeholder-sub { font-size: 14px; }
-  .identity-name { font-size: 22px; }
-  .identity-course { font-size: 14px; }
-  .pillar { font-size: 12px; padding: 5px 12px; }
-  .script-panel { min-height: 100px; max-height: 130px; padding: 10px 20px; }
-  .script-commitment-prefix { font-size: 16px; }
-  .script-section { font-size: 19px; }
-  .script-text { font-size: 14px; line-height: 1.45; }
+@media(max-height:680px){
+  .presentation{padding-top:18px;}
+  .top-header{height:115px;}
+  .logo,.bulldog{width:95px;height:95px;}
+  .school-title{font-size:24px;}
+  .greeting{font-size:17px;}
+  .timeline-item{font-size:13px;padding:0 12px;}
+  .video-card{height:240px;}
+  .play{width:52px;height:52px;font-size:20px;}
+  .placeholder-title{font-size:22px;}
+  .placeholder-sub{font-size:14px;}
+  .identity-name{font-size:22px;}
+  .identity-course{font-size:14px;}
+  .pillar{font-size:12px;padding:5px 12px;}
+  .script-panel{min-height:100px;max-height:130px;padding:10px 20px;}
+  .script-commitment-prefix{font-size:16px;}
+  .script-section{font-size:19px;}
+  .script-text{font-size:14px;line-height:1.45;}
 }
 </style>
 </head>
 <body>
 <div class="screen">
-  <!-- INTRO SLIDE -->
   <section class="intro" id="intro">
     <img class="intro-logo" alt="NU Logo">
     <div class="intro-school">NATIONAL UNIVERSITY</div>
@@ -465,7 +166,6 @@ body {
     <img class="intro-bulldog" alt="NU Bulldog">
   </section>
 
-  <!-- MAIN PRESENTATION -->
   <main class="presentation" id="presentation">
     <header class="top-header">
       <img class="logo" alt="NU Logo">
@@ -529,65 +229,42 @@ body {
 <script>
 const intro = document.getElementById("intro");
 const presentation = document.getElementById("presentation");
-
-setTimeout(() => {
-  intro.classList.add("hidden");
-  setTimeout(() => {
-    presentation.classList.add("show");
-  }, 700);
-}, 5000);
+setTimeout(()=>{intro.classList.add("hidden");setTimeout(()=>{presentation.classList.add("show")},700)},5000);
 
 const sections = [
-  { title: "", text: "I am Iona Cruz from BS Psychology, PSY261.", tab: null, pillar: null, isCommitment: false },
-  { title: "VISION", text: "We are National University, a dynamic private institution committed to nation-building, recognized internationally in education and research.", tab: "visionTab", pillar: null, isCommitment: false },
-  { title: "MISSION", text: "Guided by the core values and characterized by our cultural heritage of Dynamic Filipinism, National University is committed to providing relevant, innovative, and accessible quality education and other development programs.", tab: "missionTab", pillar: null, isCommitment: false },
-  { title: "STUDENTS", text: "We are committed to our STUDENTS, by molding them into life-long learners, ethical, spiritual citizens, and self-directed agents of change.", tab: "commitmentTab", pillar: "students", isCommitment: true },
-  { title: "FACULTY & EMPLOYEES", text: "We are committed to our FACULTY and EMPLOYEES, by enhancing their competencies, stimulating their passion, cultivating their commitment, and providing a just and fulfilling work environment.", tab: "commitmentTab", pillar: "employees", isCommitment: true },
-  { title: "ALUMNI", text: "We are committed to our ALUMNI, by strengthening their sense of pride through engagement, loyalty, and love for their alma mater.", tab: "commitmentTab", pillar: "alumni", isCommitment: true },
-  { title: "INDUSTRY PARTNERS & EMPLOYERS", text: "We are committed to our INDUSTRY PARTNERS and EMPLOYERS, through active collaborations by providing them Nationalians who will contribute to their growth and development.", tab: "commitmentTab", pillar: "partners", isCommitment: true },
-  { title: "COMMUNITY", text: "We are committed to our COMMUNITY, by contributing to the improvement of life's conditions and well-being of its members.", tab: "commitmentTab", pillar: "community", isCommitment: true }
+  {title:"",text:"I am Iona Cruz from BS Psychology, PSY261.",tab:null,pillar:null,isCommitment:false},
+  {title:"VISION",text:"We are National University, a dynamic private institution committed to nation-building, recognized internationally in education and research.",tab:"visionTab",pillar:null,isCommitment:false},
+  {title:"MISSION",text:"Guided by the core values and characterized by our cultural heritage of Dynamic Filipinism, National University is committed to providing relevant, innovative, and accessible quality education and other development programs.",tab:"missionTab",pillar:null,isCommitment:false},
+  {title:"STUDENTS",text:"We are committed to our STUDENTS, by molding them into life-long learners, ethical, spiritual citizens, and self-directed agents of change.",tab:"commitmentTab",pillar:"students",isCommitment:true},
+  {title:"FACULTY & EMPLOYEES",text:"We are committed to our FACULTY and EMPLOYEES, by enhancing their competencies, stimulating their passion, cultivating their commitment, and providing a just and fulfilling work environment.",tab:"commitmentTab",pillar:"employees",isCommitment:true},
+  {title:"ALUMNI",text:"We are committed to our ALUMNI, by strengthening their sense of pride through engagement, loyalty, and love for their alma mater.",tab:"commitmentTab",pillar:"alumni",isCommitment:true},
+  {title:"INDUSTRY PARTNERS & EMPLOYERS",text:"We are committed to our INDUSTRY PARTNERS and EMPLOYERS, through active collaborations by providing them Nationalians who will contribute to their growth and development.",tab:"commitmentTab",pillar:"partners",isCommitment:true},
+  {title:"COMMUNITY",text:"We are committed to our COMMUNITY, by contributing to the improvement of life's conditions and well-being of its members.",tab:"commitmentTab",pillar:"community",isCommitment:true}
 ];
 
-const sectionTitle = document.getElementById("sectionTitle");
-const subtitleText = document.getElementById("subtitleText");
-const commitmentPrefix = document.getElementById("commitmentPrefix");
-const tabs = [document.getElementById("visionTab"), document.getElementById("missionTab"), document.getElementById("commitmentTab")];
-const pillars = [document.getElementById("students"), document.getElementById("employees"), document.getElementById("alumni"), document.getElementById("partners"), document.getElementById("community")];
+const sectionTitle=document.getElementById("sectionTitle");
+const subtitleText=document.getElementById("subtitleText");
+const commitmentPrefix=document.getElementById("commitmentPrefix");
+const tabs=[document.getElementById("visionTab"),document.getElementById("missionTab"),document.getElementById("commitmentTab")];
+const pillars=[document.getElementById("students"),document.getElementById("employees"),document.getElementById("alumni"),document.getElementById("partners"),document.getElementById("community")];
 
-function showSection(index) {
-  const data = sections[index];
-  sectionTitle.style.opacity = "0";
-  subtitleText.style.opacity = "0";
-  commitmentPrefix.style.opacity = "0";
-
-  setTimeout(() => {
-    sectionTitle.textContent = data.title;
-    subtitleText.textContent = data.text;
-    if (data.isCommitment) {
-      commitmentPrefix.style.display = "block";
-      setTimeout(() => { commitmentPrefix.style.opacity = "1"; }, 50);
-    } else {
-      commitmentPrefix.style.display = "none";
-    }
-    sectionTitle.style.opacity = "1";
-    subtitleText.style.opacity = "1";
-  }, 250);
-
-  tabs.forEach(tab => tab.classList.remove("active"));
-  if (data.tab) document.getElementById(data.tab).classList.add("active");
-
-  pillars.forEach(pillar => pillar.classList.remove("active"));
-  if (data.pillar) document.getElementById(data.pillar).classList.add("active");
+function showSection(index){
+  const data=sections[index];
+  sectionTitle.style.opacity="0";subtitleText.style.opacity="0";commitmentPrefix.style.opacity="0";
+  setTimeout(()=>{
+    sectionTitle.textContent=data.title;
+    subtitleText.textContent=data.text;
+    if(data.isCommitment){commitmentPrefix.style.display="block";setTimeout(()=>{commitmentPrefix.style.opacity="1"},50);}
+    else{commitmentPrefix.style.display="none";}
+    sectionTitle.style.opacity="1";subtitleText.style.opacity="1";
+  },250);
+  tabs.forEach(t=>t.classList.remove("active"));
+  if(data.tab)document.getElementById(data.tab).classList.add("active");
+  pillars.forEach(p=>p.classList.remove("active"));
+  if(data.pillar)document.getElementById(data.pillar).classList.add("active");
 }
-
-let currentSection = 0;
-showSection(currentSection);
-
-setInterval(() => {
-  currentSection++;
-  if (currentSection >= sections.length) currentSection = 0;
-  showSection(currentSection);
-}, 9000);
+let currentSection=0;showSection(currentSection);
+setInterval(()=>{currentSection++;if(currentSection>=sections.length)currentSection=0;showSection(currentSection)},9000);
 </script>
 </body>
 </html>
