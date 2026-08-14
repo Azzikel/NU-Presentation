@@ -25,7 +25,7 @@ body {
   color: white;
 }
 
-/* ===== MAIN SCREEN BACKGROUND (unchanged) ===== */
+/* ===== MAIN SCREEN BACKGROUND ===== */
 .screen {
   position: relative;
   width: 100vw;
@@ -39,7 +39,7 @@ body {
       rgba(40, 67, 82, 0.52),
       rgba(115, 92, 38, 0.35)
     ),
-    url("../NU SYMBOLS/nu-campus.png");
+    url("NU SYMBOLS/nu-campus.png");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -58,7 +58,7 @@ body {
   z-index: 1;
 }
 
-/* ===== INTRO SLIDE — ✅ nu-campusintro.jpg ===== */
+/* ===== INTRO SLIDE — ✅ CORRECTED PATHS ===== */
 .intro {
   position: absolute;
   inset: 0;
@@ -70,7 +70,7 @@ body {
   text-align: center;
   background:
     linear-gradient(rgba(2, 28, 60, 0.78), rgba(2, 28, 60, 0.78)),
-    url("../NU SYMBOLS/nu-campusintro.jpg");
+    url("NU SYMBOLS/nu-campusintro.jpg");
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
@@ -84,6 +84,7 @@ body {
   width: 175px;
   height: 175px;
   object-fit: contain;
+  content: url("NU SYMBOLS/nu-logo.png");
   filter:
     drop-shadow(0 5px 12px rgba(0,0,0,.55))
     drop-shadow(0 0 18px rgba(255,193,7,.40));
@@ -122,12 +123,13 @@ body {
   width: 160px;
   height: 160px;
   object-fit: contain;
+  content: url("NU SYMBOLS/nu-bulldog.png");
   filter:
     drop-shadow(0 5px 12px rgba(0,0,0,.55))
     drop-shadow(0 0 18px rgba(255,193,7,.40));
 }
 
-/* ===== EVERYTHING ELSE — UNCHANGED ===== */
+/* ===== MAIN PRESENTATION ===== */
 .presentation {
   position: absolute;
   inset: 0;
@@ -158,6 +160,7 @@ body {
   width: 145px;
   height: 145px;
   object-fit: contain;
+  content: url("NU SYMBOLS/nu-logo.png");
   filter:
     drop-shadow(0 4px 10px rgba(0,0,0,.55))
     drop-shadow(0 0 12px rgba(255,193,7,.35));
@@ -169,6 +172,7 @@ body {
   width: 145px;
   height: 145px;
   object-fit: contain;
+  content: url("NU SYMBOLS/nu-bulldog.png");
   filter:
     drop-shadow(0 4px 10px rgba(0,0,0,.55))
     drop-shadow(0 0 12px rgba(255,193,7,.35));
@@ -451,20 +455,20 @@ body {
 </head>
 <body>
 <div class="screen">
-  <!-- INTRO SLIDE — ✅ nu-campusintro.jpg -->
+  <!-- INTRO SLIDE -->
   <section class="intro" id="intro">
-    <img class="intro-logo" src="../NU SYMBOLS/nu-logo.png" alt="NU Logo">
+    <img class="intro-logo" alt="NU Logo">
     <div class="intro-school">NATIONAL UNIVERSITY</div>
     <div class="intro-line"></div>
     <div class="intro-name">IONA CRUZ</div>
     <div class="intro-course">BS PSYCHOLOGY • PSY261</div>
-    <img class="intro-bulldog" src="../NU SYMBOLS/nu-bulldog.png" alt="NU Bulldog">
+    <img class="intro-bulldog" alt="NU Bulldog">
   </section>
 
   <!-- MAIN PRESENTATION -->
   <main class="presentation" id="presentation">
     <header class="top-header">
-      <img class="logo" src="../NU SYMBOLS/nu-logo.png" alt="NU Logo">
+      <img class="logo" alt="NU Logo">
       <div class="title-area">
         <div class="school-title">NATIONAL UNIVERSITY</div>
         <div class="greeting">Greetings in the name of Gold and Blue!</div>
@@ -474,7 +478,7 @@ body {
           <div class="timeline-item" id="commitmentTab">COMMITMENT</div>
         </div>
       </div>
-      <img class="bulldog" src="../NU SYMBOLS/nu-bulldog.png" alt="NU Bulldog">
+      <img class="bulldog" alt="NU Bulldog">
     </header>
 
     <section class="main-content">
